@@ -196,10 +196,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Chunk
   fencePrefab: {fileID: 7060638913910971638, guid: 92c50cce12f9f934c882505c29a2ed3b, type: 3}
+  applePrefab: {fileID: 1761414617207433963, guid: 1c3a0afc65a992f43b953de87ac18507, type: 3}
+  coinPrefab: {fileID: 1897350140213753467, guid: b66abf3f5fa34794fbf231ef536707f6, type: 3}
+  appleSpawnChance: 0.3
+  coinSpawnChance: 0.5
+  coinSeparationLength: 2
   lanes:
-  - -2.5
+  - -3
   - 0
-  - 2.5
+  - 3
 --- !u!1001 &668050759235528381
 PrefabInstance:
   m_ObjectHideFlags: 0

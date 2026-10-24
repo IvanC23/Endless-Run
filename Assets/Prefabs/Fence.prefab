@@ -43,6 +43,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7681570425922808311}
   - component: {fileID: 200530162477458881}
+  - component: {fileID: 1070913021307963187}
   m_Layer: 0
   m_Name: Fence
   m_TagString: Untagged
@@ -87,6 +88,33 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.6993337, y: 1.4276719, z: 0.34903067}
   m_Center: {x: -0.009461641, y: 0.0700171, z: -0.0037846267}
+--- !u!54 &1070913021307963187
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7060638913910971638}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1001 &915782703893247315
 PrefabInstance:
   m_ObjectHideFlags: 0
