@@ -17,6 +17,9 @@ public class Chunk : MonoBehaviour
 
     LevelGenerator levelGenerator;
     ScoreManager scoreManager;
+    GameManager gameManager;
+
+    public GameManager GameManager => gameManager;
 
     void Start()
     {
@@ -25,10 +28,11 @@ public class Chunk : MonoBehaviour
         SpawnCoins();
     }
 
-    public void Init(LevelGenerator levelGenerator, ScoreManager scoreManager)
+    public void Init(LevelGenerator levelGenerator, ScoreManager scoreManager, GameManager gameManager)
     {
         this.levelGenerator = levelGenerator;
         this.scoreManager = scoreManager;
+        this.gameManager = gameManager;
     }
 
     void SpawnFences()

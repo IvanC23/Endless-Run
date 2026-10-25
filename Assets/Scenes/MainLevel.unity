@@ -6391,10 +6391,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelGenerator
   cameraController: {fileID: 23385277}
-  chunkPrefab: {fileID: 8406848307560592282, guid: 97effef3353805b41938388939655a51, type: 3}
+  chunkPrefab:
+  - {fileID: 8406848307560592282, guid: 97effef3353805b41938388939655a51, type: 3}
+  - {fileID: 5855935080011582466, guid: d06101897e1b06147b30237dfb5715a3, type: 3}
+  - {fileID: 2560668130168563699, guid: 53b59008dd6f09d4bae52a487bb39236, type: 3}
+  - {fileID: 6654871880667653414, guid: 679453bda56a31e48b6b1af3b3ad499e, type: 3}
+  - {fileID: 8406848307560592282, guid: 97effef3353805b41938388939655a51, type: 3}
+  - {fileID: 8406848307560592282, guid: 97effef3353805b41938388939655a51, type: 3}
+  checkpointChunkPrefab: {fileID: 5816298195479653856, guid: d7c5c1c68871201479d309aeddef6246, type: 3}
   chunkParent: {fileID: 475003275}
   scoreManager: {fileID: 805788048}
+  gameManager: {fileID: 805788049}
   startingChunksAmount: 12
+  checkpointChunkInterval: 8
   chunkLength: 10
   moveSpeed: 8
   minMoveSpeed: 2
