@@ -3,12 +3,22 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
+    [Header("References")]
+    [SerializeField] CameraController cameraController;
     [SerializeField] GameObject chunkPrefab;
-    [SerializeField] int startingChunksAmount = 12;
     [SerializeField] Transform chunkParent;
+
+    [Header("Level Settings")]
+    [Tooltip("Amount of chunks to spawn at the start of the game")]
+    [SerializeField] int startingChunksAmount = 12;
+    [Tooltip("Do not change chunk legth unless chunk prefab size reflects the change")]
     [SerializeField] float chunkLength = 10f;
     [SerializeField] float moveSpeed = 8f;
     [SerializeField] float minMoveSpeed = 2f;
+    [SerializeField] float maxMoveSpeed = 20f;
+    [SerializeField] float minGravityZ = -22f;
+    [SerializeField] float maxGravityZ = -2f;
+
 
     List<GameObject> chunks = new List<GameObject>();
 
@@ -24,21 +34,26 @@ public class LevelGenerator : MonoBehaviour
 
     public void ChangeChunkMoveSpeed(float speedAmount)
     {
-        moveSpeed += speedAmount;
+        float newMoveSpeed = moveSpeed + speedAmount;
+        newMoveSpeed = Mathf.Clamp(newMoveSpeed, minMoveSpeed, maxMoveSpeed);
 
-        if (moveSpeed < minMoveSpeed)
+        if (moveSpeed != newMoveSpeed)
         {
-            moveSpeed = minMoveSpeed;
-        }
+            moveSpeed = newMoveSpeed;
 
-        Physics.gravity = new Vector3(Physics.gravity.x, Physics.gravity.y, Physics.gravity.z - speedAmount);
+            float newGravityZ = Physics.gravity.z - speedAmount;
+            newGravityZ = Mathf.Clamp(newGravityZ, minGravityZ, maxGravityZ);
+
+            Physics.gravity = new Vector3(Physics.gravity.x, Physics.gravity.y, newGravityZ);
+            cameraController.ChangeCameraFOV(speedAmount);
+        }
     }
 
     void SpawnChunks()
     {
         for (int i = 0; i < startingChunksAmount; i++)
         {
-           SpawnChunk();
+            SpawnChunk();
         }
     }
 
@@ -60,13 +75,14 @@ public class LevelGenerator : MonoBehaviour
 
     void SpawnChunk()
     {
-        if(chunks.Count > 0)
+        if (chunks.Count > 0)
         {
             GameObject lastChunk = chunks[chunks.Count - 1];
             Vector3 newPosition = lastChunk.transform.position + Vector3.forward * chunkLength;
             GameObject newChunk = Instantiate(chunkPrefab, newPosition, Quaternion.identity, chunkParent);
             chunks.Add(newChunk);
-        }else
+        }
+        else
         {
             GameObject newChunk = Instantiate(chunkPrefab, transform.position, Quaternion.identity, chunkParent);
             chunks.Add(newChunk);
