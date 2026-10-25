@@ -3,17 +3,16 @@ using UnityEngine;
 public class Apple : PickUp
 {
     [SerializeField] float adjustChangeMoveSpeed = 2f;
-    const string hitString = "Hit";
-
     LevelGenerator levelGenerator;
 
-    void Start()
+    public void Init(LevelGenerator levelGenerator)
     {
-        levelGenerator = FindAnyObjectByType<LevelGenerator>();
+        this.levelGenerator = levelGenerator;
     }
-    
+
     protected override void OnPickup()
     {
         levelGenerator.ChangeChunkMoveSpeed(adjustChangeMoveSpeed);
+        Destroy(gameObject);
     }
 }
