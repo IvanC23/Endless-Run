@@ -8,9 +8,23 @@ public class ObstacleSpawner : MonoBehaviour
     [SerializeField] Transform obstacleParent;
     [SerializeField] float spawnWidth = 4f;
 
+    private float minSpawnInterval = 1f;
+
     void Start()
     {
         StartCoroutine(SpawnObstacles());
+    }
+
+    public void DecreaseSpawnTime(float amount)
+    {
+        if (spawnInterval - amount < minSpawnInterval)
+        {
+            spawnInterval = minSpawnInterval;
+        }
+        else
+        {
+            spawnInterval -= amount;
+        }
     }
 
     IEnumerator SpawnObstacles()
